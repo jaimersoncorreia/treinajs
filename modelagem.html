@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html ng-app="listaTelefonica">
+<head>
+	<meta charset="utf-8">
+	<title>Trabalho de Modelagem</title>
+	<link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="lib/treinar/treinar.css">
+	<script src="lib/angular/angular.js" ></script>
+	<script>
+		angular.module("listaTelefonica",[]);
+		angular.module("listaTelefonica").controller("listaTelefonicaCtrl",function ($scope) {
+			$scope.app = "Gerador de Números Aleatórios";
+			$scope.quantidades = [];
+
+			$scope.adicionarquantidade = function(quantidade) {
+				for (var i = 0; i < quantidade; i++) {	
+					$scope.quantidades.push(angular.copy(quantidade));
+				}
+				console.log(quantidade);
+			}
+			$scope.pegarTempo = new Date().getTime();
+		});
+	</script>
+</head>
+	
+<body ng-controller="listaTelefonicaCtrl">
+	<div class="jumbotron">
+		<h4>{{app}}</h4>
+		<input class="form-control" type="number" ng-model="quantidade.nome" placeholder="Nome" />
+		<button class="btn btn-primary btn-block" ng-click="adicionarquantidade(quantidade)">Adicionar quantidade</button>
+
+		<table class="table table-striped">
+			<tr>
+				<th>Nome</th>
+				<th>Telefone {{pegarTempo}}</th>
+			</tr>
+			<tr ng-repeat="quantidade in quantidades">
+				<td>{{quantidade}}</td>
+				<td>{{quantidade}}</td>
+			</tr>
+		</table>
+		<hr>
+		
+	</div>
+</body>
+</html>
